@@ -1,0 +1,8 @@
+<form action="{% url 'author_update' author.id %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="author_id" value="{{ author.id }}">
+  作者名：<input type="text" name="name" value="{{ author.name }}" ></br>
+  年龄: <input type="text" name="age" value="{{ author.age }}" ><br >
+  <input type="submit" value="提交">
+</form>
+<a href="{% url 'index' %}">Back</a>

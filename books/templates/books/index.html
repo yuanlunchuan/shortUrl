@@ -1,0 +1,32 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Author list page.</h1>
+
+  <a href="{% url 'author_new' %}">New author</a>
+
+  {% if authors %}
+    <table>
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      {% for author in authors %}
+        <tr>
+          <td>{{ author.id }}</td>
+          <td><a href="{% url 'author_detail' author.id %}">{{ author.name }}</a></td>
+          <td>{{ author.age }}</td>
+          <td><a href="{% url 'auhthor_edit' author.id %}">修改</a>/<a href="{% url 'author_delete' author.id %}">删除</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Author is null.</p>
+  {% endif %}
+</div>
+{% endblock %}
